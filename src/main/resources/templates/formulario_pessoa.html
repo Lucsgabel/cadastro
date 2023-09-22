@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: black;
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            
+        }
+
+        h1 {
+            color: white;
+            margin-top: 30px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 200px;
+            margin: 20px auto;
+            background-color: lightseagreen;
+            padding: 40px;
+            border-radius: 10px;
+            
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: green;
+            color: white;
+            border: 2px solid black;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 40px;
+            font-size: 18px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin-top: 30px;
+            display: inline-block;
+            font-size: 16px;
+            margin-left: 40px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>Registro de Alunos</h1>
+    <div class="container">
+        <form th:action="@{/pessoas/salvar}" th:object="${pessoa}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required>
+            <br>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" th:field="*{email}" required>
+            <br>
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" th:field="*{telefone}" required>
+            <br>
+            <button type="submit">Registrar</button>
+        </form>
+        <a href="/pessoas" id="buttonVerificar">Verificar Registros</a>
+    </div>
+</body>
+
+</html>
